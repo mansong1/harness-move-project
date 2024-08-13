@@ -6,6 +6,7 @@ import (
 
 	"github.com/Fernando-Dourado/harness-move-project/operation"
 	"github.com/fatih/color"
+	"github.com/go-resty/resty/v2"
 	"github.com/urfave/cli"
 )
 
@@ -48,11 +49,22 @@ func main() {
 			Usage:    "TODO: Explain the arg usage",
 			Required: false,
 		},
+		cli.StringFlag{
+			Name:     "proxy",
+			Usage:    "Proxy URL to use for network requests.",
+			Required: false,
+		},
 	}
 	app.Run(os.Args)
 }
 
 func run(c *cli.Context) {
+
+	// Set proxy if provided
+	if proxy := c.String("proxy"); proxy != "" {
+		client := resty.New()
+		client.SetProxy(proxy)
+	}
 	mv := operation.Move{
 		Config: operation.Config{
 			Token:   c.String("api-token"),
