@@ -21,32 +21,34 @@ func main() {
 	app.Flags = []cli.Flag{
 		cli.StringFlag{
 			Name:     "api-token",
-			Usage:    "TODO: Explain the api-token usage",
+			Usage:    "Harness API token for authentication.",
+			EnvVar:   "HARNESS_API_TOKEN",
 			Required: true,
 		},
 		cli.StringFlag{
 			Name:     "account",
-			Usage:    "TODO: Explain the arg usage",
+			Usage:    "Account identifier within Harness.",
+			EnvVar:   "HARNESS_ACCOUNT",
 			Required: true,
 		},
 		cli.StringFlag{
 			Name:     "source-org",
-			Usage:    "TODO: Explain the arg usage",
+			Usage:    "Source organization from where the project will be moved.",
 			Required: true,
 		},
 		cli.StringFlag{
 			Name:     "source-project",
-			Usage:    "TODO: Explain the arg usage",
+			Usage:    "Source project to be moved.",
 			Required: true,
 		},
 		cli.StringFlag{
 			Name:     "target-org",
-			Usage:    "TODO: Explain the arg usage",
+			Usage:    "Target organization to where the project will be moved.",
 			Required: true,
 		},
 		cli.StringFlag{
 			Name:     "target-project",
-			Usage:    "TODO: Explain the arg usage",
+			Usage:    "Target project name in the target organization. Defaults to the source project name if not specified.",
 			Required: false,
 		},
 		cli.StringFlag{
